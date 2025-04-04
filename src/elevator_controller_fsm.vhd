@@ -11,8 +11,8 @@
 --| ---------------------------------------------------------------------------
 --|
 --| FILENAME      : MooreElevatorController.vhd
---| AUTHOR(S)     : Capt Phillip Warner, Capt Dan Johnson, Capt Brian Yarbrough, ***YourName***
---| CREATED       : 03/2018 Last Modified on 06/24/2020
+--| AUTHOR(S)     : C2C Jaden Liu, Capt Phillip Warner, Capt Dan Johnson, Capt Brian Yarbrough, ***YourName***
+--| CREATED       : 03/2018 Last Modified on 4/4/2025
 --| DESCRIPTION   : This file implements the ICE5 Basic elevator controller (Moore Machine)
 --|
 --|  The system is specified as follows:
@@ -88,7 +88,7 @@ architecture Behavioral of elevator_controller_fsm is
 	type sm_floor is (s_floor1, s_floor2, s_floor3, s_floor4);
 	
 	-- Here you create variables that can take on the values defined above. Neat!	
-	signal f_Q, f_Q_next: sm_floor;
+	signal current_floor, next_floor: sm_floor;
 
 begin
 

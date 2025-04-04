@@ -11,8 +11,8 @@
 --| ---------------------------------------------------------------------------
 --|
 --| FILENAME      : MooreElevatorController_tb.vhd (TEST BENCH)
---| AUTHOR(S)     : Capt Phillip Warner, Capt Dan Johnson, **Your Name Here**
---| CREATED       : 03/2017 Last modified on 06/24/2020
+--| AUTHOR(S)     : C2C Jaden Liu, Capt Phillip Warner, Capt Dan Johnson, **Your Name Here**
+--| CREATED       : 03/2017 Last modified on 4/4/2025
 --| DESCRIPTION   : This file tests the Moore elevator controller module
 --|
 --| DOCUMENTATION : None
