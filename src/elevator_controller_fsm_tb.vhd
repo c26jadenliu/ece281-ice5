@@ -95,7 +95,7 @@ begin
 		wait for k_clk_period/2;
 	end process clk_process;
 	
-	
+	--no assert
 	-- Test Plan Process --------------------------------
 	test_process : process 
 	begin
@@ -103,7 +103,7 @@ begin
         w_reset <= '1';  wait for k_clk_period;
             assert w_floor = x"2" report "bad reset" severity failure; 
         -- clear reset
-		
+		w_reset <= '0';
 		-- active UP signal
 		w_up_down <= '1'; 
 		
@@ -114,7 +114,8 @@ begin
         w_stop <= '1';  wait for k_clk_period * 2;
             assert w_floor = x"3" report "bad wait on floor3" severity failure;
 		--  go up again
-		
+		w_stop <= '0'; wait for k_clk_period;
+		  
 		-- go back down one floor
 		
 		-- go up the rest of the way

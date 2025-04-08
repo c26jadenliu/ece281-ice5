@@ -95,20 +95,58 @@ begin
 	-- CONCURRENT STATEMENTS ------------------------------------------------------------------------------
 	
 	-- Next State Logic
-  
-	-- Output logic
-
+    process(current_floor, i_up_down)
+    begin
+        case current_floor is
+            when s_floor1=>
+            if i_up_down = '1' then
+                    next_floor <= s_floor2;
+                else
+                    next_floor <= s_floor1;
+                end if;
+            when s_floor2=>
+                if i_up_down = '1' then
+                    next_floor <= s_floor3;
+                else
+                    next_floor <= s_floor1;
+                end if;
+            when s_floor3 =>
+                if i_up_down = '1' then
+                    next_floor <= s_floor4;
+                else
+                    next_floor <= s_floor2;
+                end if;
+            when s_floor4 =>
+                if i_up_down = '1' then
+                    next_floor <= s_floor4;
+                else
+                    next_floor <= s_floor3;
+                end if;
+            when others =>
+                next_floor <= s_floor2;
+        end case;
+    end process;
+    
+    process(i_clk)
+    begin
+        if rising_edge(i_clk) then
+            if i_reset = '1' then
+                current_floor <= s_floor2;
+            elsif i_stop = '0' then
+                current_floor <= next_floor;
+            end if;
+        end if;
+    end process;
+    
+     -- Output logic
+    with current_floor select
+        o_floor <= "0001" when s_floor1,
+                   "0010" when s_floor2,
+                   "0011" when s_floor3,
+                   "0100" when s_floor4,
+                   "0001" when others; 
 	-------------------------------------------------------------------------------------------------------
-	
-	-- PROCESSES ------------------------------------------------------------------------------------------	
-	
-	-- State register ------------
-	
-	
-	-------------------------------------------------------------------------------------------------------
-	
-	
-
+		
 
 
 end Behavioral;
